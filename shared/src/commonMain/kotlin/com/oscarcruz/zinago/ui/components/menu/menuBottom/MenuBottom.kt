@@ -61,7 +61,7 @@ fun MenuBottomContent(
             .fillMaxWidth()
             .height(60.dp),
         shape = RoundedCornerShape(40.dp),
-        color = MaterialTheme.colorScheme.surface,
+        color =  MaterialTheme.colorScheme.background,
         tonalElevation = 6.dp,
         shadowElevation = 8.dp
     ) {

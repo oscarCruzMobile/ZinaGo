@@ -11,22 +11,21 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun BackGroundContentLayer(
-    backgroundColor: Color = MaterialTheme.colorScheme.background,
-    useSafePadding: Boolean = true,
+    modifier: Modifier = Modifier,
+    backgroundColor: Color = MaterialTheme.colorScheme.primary,
     content: @Composable () -> Unit
 ) {
+    // 1. Capa de Fondo (Edge-to-Edge puro)
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
-            .background(backgroundColor)
+            .background(backgroundColor) // Llena hasta el borde (notch/gestos)
     ) {
-        // Aplicamos padding solo si se requiere
-        val contentModifier = if (useSafePadding) Modifier.safeDrawingPadding() else Modifier
-
+        // 2. Capa de Seguridad (Solo empuja el contenido)
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .then(contentModifier)
+                .safeDrawingPadding() // Ajuste automático para iOS y Android
         ) {
             content()
         }

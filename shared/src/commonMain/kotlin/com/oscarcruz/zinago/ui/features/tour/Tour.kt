@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -22,9 +23,11 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oscarcruz.zinago.Greeting
+import com.oscarcruz.zinago.ui.components.layers.BackGroundContentLayer
+import com.oscarcruz.zinago.ui.theme.BgTurquesa
 import org.jetbrains.compose.resources.painterResource
 import zinago.shared.generated.resources.Res
-import zinago.shared.generated.resources.icon_zinago
+import zinago.shared.generated.resources.ic_stroke_app
 
 
 @Composable
@@ -33,6 +36,7 @@ fun TourView(onFinishTour: () -> Unit) {
 }
 @Composable
 fun TourContent() {
+    BackGroundContentLayer(backgroundColor = BgTurquesa){
     val greeting = remember { Greeting().greet() }
     Column(
         modifier = Modifier
@@ -41,9 +45,10 @@ fun TourContent() {
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(Res.drawable.icon_zinago), // Usando el recurso convertido
+            painter = painterResource(Res.drawable.ic_stroke_app), // Usando el recurso convertido
             contentDescription = "Zinago Icon",
-            modifier = Modifier.size(300.dp)
+            modifier = Modifier.size(300.dp),
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSecondary),
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -62,4 +67,5 @@ fun TourContent() {
             textAlign = TextAlign.Center,
         )
     }
+}
 }

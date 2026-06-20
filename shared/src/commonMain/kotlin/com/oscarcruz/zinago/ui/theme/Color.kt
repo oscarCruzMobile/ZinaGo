@@ -2,6 +2,9 @@ package com.oscarcruz.zinago.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val BgAmarillo = Color(0xFFE5BB45)
+val BgTurquesa = Color(0xFF41C2B9)
+
 // Primary — Azul
 val Primary             = Color(0xFF176FF2)
 val OnPrimary           = Color(0xFFFFFFFF)

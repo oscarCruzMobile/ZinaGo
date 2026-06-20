@@ -16,6 +16,9 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Shared"
             isStatic = true
+            // AGREGA ESTO PARA EXPORTAR KOIN AL FRAMEWORK DE IOS
+            export(libs.koin.core)
+            export(libs.koin.compose)
         }
     }
 
@@ -53,8 +56,12 @@ kotlin {
 
             // Serialización JSON multiplataforma
             implementation(libs.kotlinx.serialization.json)
-
+            // constraint layout
             implementation(libs.constraintlayout.compose.multiplatform)
+            // coin
+            api(libs.koin.core)
+            api(libs.koin.compose)
+            api(libs.koin.compose.viewmodel)
                     }
 
 

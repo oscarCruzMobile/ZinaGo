@@ -33,15 +33,6 @@ fun MenuBottom(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    LaunchedEffect(Unit) {
-        viewModel.events.collect { event ->
-            when (event) {
-                is MenuBottomEvent.NavigateTo -> {
-                    // navController.navigate(event.index)
-                }
-            }
-        }
-    }
 
     MenuBottomContent(
         uiState = uiState,

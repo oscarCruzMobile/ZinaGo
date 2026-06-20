@@ -12,26 +12,25 @@ local.properties
 .cxx/
 captures/
 .flatfile/
-.gradle/
 .settings/
 .project
 .classpath
 
 # --- iOS / Xcode ---
-# Ignoramos todo lo de Xcode, excepto lo esencial para el proyecto
+# Solo ignoramos archivos de usuario temporales, no la estructura del proyecto
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/xcshareddata/xcschemes/
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
-.DS_Store
+
+# Aseguramos que los archivos de configuración del workspace se mantengan
+!*.xcworkspace/
+.lock
 *.swp
-*.lock
-**/xcshareddata/WorkspaceSettings.xcsettings
 
 # --- Carpetas de usuario y caché ---
-# Xcode (archivos de usuario)
 *.xcuserdatad/
 *.userstate
 *.moved-aside

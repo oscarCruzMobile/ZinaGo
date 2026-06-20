@@ -1,11 +1,12 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidMultiplatformLibrary)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.composeCompiler)
-}
+        plugins {
+            alias(libs.plugins.kotlinMultiplatform)
+            alias(libs.plugins.androidMultiplatformLibrary)
+            alias(libs.plugins.composeMultiplatform)
+            alias(libs.plugins.composeCompiler)
+            alias(libs.plugins.kotlinSerialization)
+        }
 
 kotlin {
     listOf(
@@ -24,7 +25,7 @@ kotlin {
         minSdk = libs.versions.android.minSdk.get().toInt()
 
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_11
+            jvmTarget = JvmTarget.JVM_21
         }
         androidResources {
             enable = true
@@ -39,24 +40,29 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
         }
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.components.resources)
+            implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-        }
+            //navigationN multiplataforma
+            implementation(libs.navigation.compose)
+
+            // Serialización JSON multiplataforma
+            implementation(libs.kotlinx.serialization.json)
+
+            implementation(libs.constraintlayout.compose.multiplatform)
+                    }
+
+
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
     }
-}
-
-// 👈 Necesario para que genere Res.font.urbanist_*
-compose.resources {
-    publicResClass = true
-    generateResClass = always
 }
 
 dependencies {

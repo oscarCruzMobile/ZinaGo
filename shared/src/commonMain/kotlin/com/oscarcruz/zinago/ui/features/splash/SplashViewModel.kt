@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 
 class SplashViewModel : ViewModel() {
 
+
     // 1. Definimos el Channel. Usamos BufferOverflow.DROP_OLDEST por seguridad,
     // aunque en un Splash raramente tendremos colisiones.
     private val _navigationEvent = Channel<String>(Channel.BUFFERED)
@@ -22,7 +23,7 @@ class SplashViewModel : ViewModel() {
 
     private fun startTimer() {
         viewModelScope.launch {
-            delay(6000) // 7 segundos como definiste
+            delay(4000) // 7 segundos como definiste
             _navigationEvent.send("navigate_next")
         }
     }

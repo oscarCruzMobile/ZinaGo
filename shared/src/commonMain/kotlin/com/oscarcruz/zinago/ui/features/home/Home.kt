@@ -3,6 +3,7 @@ package com.oscarcruz.zinago.ui.features.home
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -11,6 +12,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.oscarcruz.zinago.ui.components.layers.BackGroundContentLayer
 import com.oscarcruz.zinago.ui.components.menu.menuBottom.MenuBottom
 import com.oscarcruz.zinago.ui.components.menu.menuBottom.MenuBottomViewModel
 import com.oscarcruz.zinago.ui.features.home.tabs.HomeTabView
@@ -49,6 +51,10 @@ fun HomeView(
         }
     }
 
+    BackGroundContentLayer(
+        backgroundColor = MaterialTheme.colorScheme.background
+    ) {
+
     Box(modifier = Modifier.fillMaxSize()) {
 
         // ── Contenido de las tabs ─────────────────────────────────────────
@@ -75,5 +81,5 @@ fun HomeView(
                                       // 1° insets del sistema
                 .padding( vertical = 12.dp)  // 2° margen visual
         )
-    }
+    } }
 }

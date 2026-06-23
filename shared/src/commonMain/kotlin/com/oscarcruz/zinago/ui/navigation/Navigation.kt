@@ -34,7 +34,7 @@ fun NavigationWrapper() {
         }
 
         composable<TourDestination> {
-            TourView(onFinishTour = { navController.navigateAndClear(HomeDestination) })
+            TourView(navigateHome = { navController.navigateAndClear(HomeDestination) })
         }
 
         composable<HomeDestination>(

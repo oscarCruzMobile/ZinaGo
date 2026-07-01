@@ -18,6 +18,8 @@ material3 = "1.11.0-alpha07"
 navigationCompose = "2.9.2"
 kotlinx-serialization = "1.11.0"
 koin-bom = "4.2.2"
+coil = "3.5.0"
+ktor = "3.5.0"
 
 [libraries]
 
@@ -52,7 +54,13 @@ koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
 koin-compose = { module = "io.insert-koin:koin-compose" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
 koin-test = { module = "io.insert-koin:koin-test" }
+# Coil (image loading multiplatform)
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 
+# Motor de red por plataforma (requerido por Coil para descargar imágenes)
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }

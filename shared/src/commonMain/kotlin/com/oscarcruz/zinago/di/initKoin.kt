@@ -6,6 +6,6 @@ import org.koin.core.context.startKoin
 fun initKoin(appDeclaration: KoinAppDeclaration = {}) {
     startKoin {
         appDeclaration()
-        modules(appModule)
+        modules(appModule,imageLoaderModule,dispatchersModule)
     }
 }

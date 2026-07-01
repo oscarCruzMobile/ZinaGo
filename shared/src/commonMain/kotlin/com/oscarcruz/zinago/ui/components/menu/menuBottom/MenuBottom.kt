@@ -8,13 +8,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.oscarcruz.zinago.ui.theme.BgTurquesa
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
@@ -32,7 +34,6 @@ fun MenuBottom(
     modifier: Modifier = Modifier
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
 
     MenuBottomContent(
         uiState = uiState,
@@ -47,26 +48,32 @@ fun MenuBottomContent(
     onAction: (MenuBottomAction) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Surface(
+    Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(60.dp),
-        shape = RoundedCornerShape(40.dp),
-        color =  MaterialTheme.colorScheme.background,
-        tonalElevation = 6.dp,
-        shadowElevation = 8.dp
+            .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
-        Row(
-            modifier = Modifier.fillMaxSize(),
-            horizontalArrangement = Arrangement.SpaceAround,
-            verticalAlignment = Alignment.CenterVertically
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(60.dp),
+            shape = CircleShape,
+            color = MaterialTheme.colorScheme.background,
+            tonalElevation = 6.dp,
+            shadowElevation = 8.dp
         ) {
-            uiState.tabs.forEachIndexed { index, tab ->
-                NavItem(
-                    iconRes = tab.iconRes,
-                    selected = uiState.selectedIndex == index,
-                    onClick = { onAction(MenuBottomAction.SelectItem(index)) }
-                )
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                uiState.tabs.forEachIndexed { index, tab ->
+                    NavItem(
+                        iconRes = tab.iconRes,
+                        selected = uiState.selectedIndex == index,
+                        onClick = { onAction(MenuBottomAction.SelectItem(index)) }
+                    )
+                }
             }
         }
     }
@@ -79,17 +86,17 @@ fun NavItem(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val iconColor = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
+    val iconColor = if (selected) BgTurquesa else MaterialTheme.colorScheme.outline
     val backgroundColor = if (selected)
-        MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
+        BgTurquesa.copy(alpha = 0.3f)
     else
         Color.Transparent
 
     Box(
         modifier = modifier
             .size(48.dp)
-            .clip(RoundedCornerShape(24.dp))      // 👈 clip antes de clickable
-            .clickable { onClick() }               // 👈 ripple dentro del círculo
+            .clip(CircleShape)
+            .clickable { onClick() }
             .background(backgroundColor),
         contentAlignment = Alignment.Center
     ) {

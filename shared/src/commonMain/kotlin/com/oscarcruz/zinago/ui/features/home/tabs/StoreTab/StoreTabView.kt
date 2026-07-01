@@ -1,4 +1,4 @@
-package com.oscarcruz.zinago.ui.features.home.tabs
+package com.oscarcruz.zinago.ui.features.home.tabs.StoreTab
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

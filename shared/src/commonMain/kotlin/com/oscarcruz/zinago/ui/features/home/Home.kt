@@ -15,10 +15,10 @@ import androidx.navigation.compose.rememberNavController
 import com.oscarcruz.zinago.ui.components.layers.BackGroundContentLayer
 import com.oscarcruz.zinago.ui.components.menu.menuBottom.MenuBottom
 import com.oscarcruz.zinago.ui.components.menu.menuBottom.MenuBottomViewModel
-import com.oscarcruz.zinago.ui.features.home.tabs.HomeTabView
-import com.oscarcruz.zinago.ui.features.home.tabs.LikesTabView
-import com.oscarcruz.zinago.ui.features.home.tabs.ProfileTabView
-import com.oscarcruz.zinago.ui.features.home.tabs.StoreTabView
+import com.oscarcruz.zinago.ui.features.home.tabs.homeTab.HomeTabView
+import com.oscarcruz.zinago.ui.features.home.tabs.likesTab.LikesTabView
+import com.oscarcruz.zinago.ui.features.home.tabs.profileTab.ProfileTabView
+import com.oscarcruz.zinago.ui.features.home.tabs.StoreTab.StoreTabView
 import com.oscarcruz.zinago.ui.navigation.navigateAndClear
 
 

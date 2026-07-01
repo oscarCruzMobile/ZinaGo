@@ -1,4 +1,4 @@
-package com.oscarcruz.zinago.ui.features.home.tabs
+package com.oscarcruz.zinago.ui.features.home.tabs.homeTab
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

@@ -1,4 +1,4 @@
-package com.oscarcruz.zinago.ui.features.home.tabs
+package com.oscarcruz.zinago.ui.features.home.tabs.profileTab
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,8 +8,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun LikesTabView() {
+fun ProfileTabView() {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Likes")
+        Text("Profile")
     }
 }

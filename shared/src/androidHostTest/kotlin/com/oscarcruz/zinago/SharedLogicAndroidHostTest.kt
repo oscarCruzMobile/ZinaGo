@@ -1,6 +1,5 @@
 package com.oscarcruz.zinago
 
-import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class SharedLogicAndroidHostTest {

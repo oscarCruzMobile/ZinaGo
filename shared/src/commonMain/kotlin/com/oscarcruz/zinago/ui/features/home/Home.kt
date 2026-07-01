@@ -19,6 +19,7 @@ import com.oscarcruz.zinago.ui.features.home.tabs.HomeTabView
 import com.oscarcruz.zinago.ui.features.home.tabs.LikesTabView
 import com.oscarcruz.zinago.ui.features.home.tabs.ProfileTabView
 import com.oscarcruz.zinago.ui.features.home.tabs.StoreTabView
+import com.oscarcruz.zinago.ui.navigation.navigateAndClear
 
 
 @Composable
@@ -28,7 +29,6 @@ fun HomeView(
     // NavController interno — solo para las tabs del menú
     val tabNavController = rememberNavController()
 
-    // Sincroniza tap del menú → navega al tab correcto
     LaunchedEffect(Unit) {
         menuViewModel.events.collect { event ->
             when (event) {
@@ -40,12 +40,9 @@ fun HomeView(
                         3 -> ProfileTabDestination
                         else -> HomeTabDestination
                     }
-                    tabNavController.navigate(destination) {
-                        // Preserva estado y evita recrear la pantalla
-                        popUpTo(HomeTabDestination) { saveState = true }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
+
+                    // Usando tu función de extensión personalizada
+                    tabNavController.navigateAndClear(destination)
                 }
             }
         }

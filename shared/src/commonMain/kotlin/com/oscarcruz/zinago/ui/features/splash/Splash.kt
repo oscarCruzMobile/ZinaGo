@@ -38,6 +38,7 @@ fun SplashView(
     navigateHome: () -> Unit,
     viewModel: SplashViewModel = koinViewModel()
 ) {
+
     // Escucha el evento de navegación proveniente del ViewModel
     LaunchedEffect(Unit) {
         viewModel.navigationEvent.collect { event ->
